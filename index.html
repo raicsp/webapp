@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <title>PWA</title>
+        <link rel="manifest" href="manifest.json">
+    </head>
+    <body>
+        <h1>This is a PWA.</h1>
+        <button id="navigateButton">Go to Public Index</button>
+
+        <script>
+            window.addEventListener('load', () => {
+                registerSW();
+            });
+
+            // Register the Service Worker
+            async function registerSW() {
+                if ('serviceWorker' in navigator) {
+                    try {
+                        await navigator
+                            .serviceWorker
+                            .register('serviceworker.js');
+                    } catch (e) {
+                        console.log('SW registration failed');
+                    }
+                }
+            }
+
+            // Button click event to navigate to public/index.html
+            document.getElementById('navigateButton').addEventListener('click', function() {
+                window.location.href = '/webapp/public/index.html';
+            });
+        </script>
+    </body>
+</html>
