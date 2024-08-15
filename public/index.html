@@ -14,14 +14,55 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
+            background-color: #f0f0f0;
         }
-        canvas{
+        video {
+            width: 100%;
+            max-width: 720px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        canvas {
             position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            max-width: 720px;
+            height: auto;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        @media (max-width: 768px) {
+            button {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+        }
+        @media (max-width: 480px) {
+            button {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
         }
     </style>
 </head>
 <body>
-    <video id="videoInput" width="720" height="550" muted controls>
+    <video id="videoInput" autoplay muted></video>
+    <button id="startRecognition">Start Recognition</button>
+    <div class="status" id="status">Click the button</div>
 
     <script defer async src="./js/face-api.min.js"></script>
     <script defer async src="./js/script.js"></script>
